@@ -166,7 +166,7 @@ export default function Admin() {
             </label>
             <label className="flex items-center gap-3">
               <input type="checkbox" defaultChecked className="w-4 h-4" />
-              <span className="text-sm text-slate-700">Average latency > 500ms</span>
+              <span className="text-sm text-slate-700">Average latency &gt; 500ms</span>
             </label>
             <label className="flex items-center gap-3">
               <input type="checkbox" className="w-4 h-4" />
