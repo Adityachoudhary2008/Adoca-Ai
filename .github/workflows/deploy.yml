@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Deploy to production
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $SERVER_HOST >> ~/.ssh/known_hosts
+          
+          ssh -i ~/.ssh/deploy_key user@$SERVER_HOST 'cd /app && \
+            git pull origin main && \
+            docker-compose pull && \
+            docker-compose up -d && \
+            docker-compose logs -n 50'
+      
+      - name: Health check
+        run: |
+          timeout 60 bash -c 'until curl -f http://${{ secrets.SERVER_HOST }}/health; do sleep 2; done'
+      
+      - name: Slack notification
+        if: always()
+        uses: slackapi/slack-github-action@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
+          payload: |
+            {
+              "text": "Adoca AI Deployment: ${{ job.status }}"
+            }

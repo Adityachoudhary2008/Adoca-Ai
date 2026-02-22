@@ -1,0 +1,95 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+myvenv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.log
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Data/Database
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.parquet
+
+# Cache
+.cache/
+*.pyc
+.pytest_cache/
+.eslintcache
+
+# OS
+Thumbs.db
+.DS_Store
+.env.example.bak
+
+# Docker
+.dockerignore
+*.tar
+
+# Temporary
+tmp/
+temp/
+*.tmp
+.turbo/
+
+# Sensitive
+*.pem
+*.key
+*.crt
+certs/
+
+# Production builds
+/dist/
+/build/

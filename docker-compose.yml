@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  adoca-ai:
+    build: .
+    container_name: adoca-ai-assistant
+    ports:
+      - "8000:8000"
+    environment:
+      - SARVAM_API_KEY=${SARVAM_API_KEY}
+      - APP_ENV=production
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./knowledge_base:/app/knowledge_base
+    restart: unless-stopped
+    networks:
+      - adoca-network
+
+networks:
+  adoca-network:
+    driver: bridge

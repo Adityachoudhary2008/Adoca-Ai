@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-colors duration-200;
+}
+
+body {
+  @apply bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900;
+}
+
+.glass {
+  @apply bg-white/80 backdrop-blur-lg border border-white/20;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+.shadow-premium {
+  @apply shadow-lg shadow-slate-200/50;
+}
