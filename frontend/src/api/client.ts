@@ -1,6 +1,21 @@
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+// In production (Render), use current domain. In dev, use localhost:8000
+const getApiBase = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL
+  }
+  
+  // Production fallback: use current domain
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+    return `https://${window.location.hostname}`
+  }
+  
+  // Development: use localhost
+  return 'http://localhost:8000'
+}
+
+const API_BASE = getApiBase()
 
 const client = axios.create({
   baseURL: API_BASE,
