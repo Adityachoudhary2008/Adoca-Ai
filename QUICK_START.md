@@ -1,6 +1,21 @@
 # Quick Start Guide for Adoca AI Assistant
 
-## 🚀 5-Minute Setup
+## 🚀 Fastest Way: Deploy to Render (1 minute)
+
+**Don't want to set up locally? Deploy to cloud instantly:**
+
+1. Go to https://render.com
+2. Click "New +" → "Web Service"
+3. Select "Adoca-Ai" GitHub repository
+4. Add 1 environment variable: `SARVAM_API_KEY=your_key`
+5. Click "Deploy"
+6. Done! Your live URL will appear in ~2 minutes
+
+See [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) for detailed guide.
+
+---
+
+## 💻 Local Development: 5-Minute Setup
 
 ### Step 1: Install Python Dependencies
 ```bash
@@ -47,6 +62,7 @@ curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
   -d '{"query": "What is RFQ?", "user_id": "test"}'
 ```
+
 
 Expected response:
 ```json

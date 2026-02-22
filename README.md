@@ -74,7 +74,20 @@ docker-compose up -d
 # Docs: http://localhost:8000/api/docs
 ```
 
-### Option 2: Local Development
+### Option 2: Deploy to Render (Free Tier Available!) 🌐
+
+Deploy directly to cloud in 3 minutes:
+
+1. Go to https://render.com
+2. Click "New +" → "Web Service"
+3. Connect your GitHub repo: `Adityachoudhary2008/Adoca-Ai`
+4. Add environment variable: `SARVAM_API_KEY=your_key`
+5. Click "Deploy"
+6. Your live URL: `https://adoca-ai.onrender.com`
+
+See [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) for detailed guide.
+
+### Option 3: Local Development
 
 ```bash
 # Install dependencies
@@ -96,7 +109,7 @@ cd frontend && npm run dev
 # API: http://localhost:8000
 ```
 
-### Option 3: Build Script
+### Option 4: Build Script
 
 **Windows:**
 ```bash

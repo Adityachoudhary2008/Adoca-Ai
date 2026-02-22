@@ -1,0 +1,48 @@
+services:
+  # Main API + Frontend service
+  - type: web
+    name: adoca-ai
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./
+    
+    # Environment variables
+    envVars:
+      - key: SARVAM_API_KEY
+        scope: run
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: MAX_RESPONSE_LENGTH
+        value: "1000"
+      - key: MIN_CONTEXT_CHUNKS
+        value: "2"
+      - key: MAX_CONTEXT_CHUNKS
+        value: "5"
+      - key: RATE_LIMIT_REQUESTS
+        value: "100"
+      - key: RATE_LIMIT_WINDOW
+        value: "3600"
+    
+    # Port configuration
+    port: 8000
+    
+    # Build configuration
+    buildCommand: npm --prefix frontend ci && npm --prefix frontend run build
+    
+    # Health check
+    healthCheckPath: /health
+    
+    # Auto-deploy on main branch
+    autoDeploy: true
+    
+    # Region (optional - set to your preferred region)
+    # region: oregon
+
+# Optional: PostgreSQL database service
+# - type: pserv
+#   name: adoca-db
+#   ipAllowList: []
+#   plan: starter

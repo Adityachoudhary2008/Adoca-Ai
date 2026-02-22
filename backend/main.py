@@ -192,11 +192,17 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 
 if __name__ == "__main__":
     import uvicorn
-    logger.info("Starting Adoca AI Assistant API server...")
+    import os
+    
+    # Support Render's PORT env variable
+    port = int(os.getenv("PORT", 8000))
+    host = "0.0.0.0"
+    
+    logger.info(f"Starting Adoca AI Assistant API server on {host}:{port}...")
     
     uvicorn.run(
         app,
-        host="0.0.0.0",
-        port=8000,
+        host=host,
+        port=port,
         log_level=settings.LOG_LEVEL.lower()
     )
